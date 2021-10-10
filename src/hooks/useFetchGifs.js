@@ -4,28 +4,30 @@ import { getGifs } from '../helpers/getGifs'
 
 
 export const useFetchGifs = ( category ) => {
-
-    const [state, setstate] = useState(
-        {
-            data: [],
-            loading: true
-        }
-    )
+    
+    const [state, setState] = useState({
+        data: [],
+        loading: true
+    });
 
     useEffect( () => {
-        getGifs(category)
+
+        getGifs( category )
             .then( imgs => {
-                setstate(
-                    {
-                        data:imgs,
-                        loading: false
-                    }
-                )
-            } );
-    }, [  ])
+                
+                setState({
+                    data: imgs,
+                    loading: false
+                });
+            })
 
-    return state;
+    }, [category])
 
+
+
+
+    return state; // { data:[], loading: true };
 
 
 }
+
